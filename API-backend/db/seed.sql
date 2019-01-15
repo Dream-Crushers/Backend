@@ -21,9 +21,7 @@ CREATE TABLE schools (
    address varchar,
    building_number varchar,
    city varchar,
-   email varchar,
-   phone varchar,
---    img varchar
+   phone varchar
 );
 
 
