@@ -15,7 +15,7 @@ products.getAll = (req,res,next) =>{
 }
 
 products.create = (req,res,next) =>{
-    db.one('INSERT INTO colors (name,rgb_value,hex_value) VALUES ($1,$2,$3) RETURNING *;', [req.body.name,req.body.rgb_value,req.body.hex_value])
+    db.one('INSERT INTO meals (name,img,calories) VALUES ($1,$2,$3) RETURNING *;', [req.body.name,req.body.img,req.body.calories])
     .then((data) =>{
         res.locals.product = data;
         next();
