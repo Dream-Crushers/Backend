@@ -1,18 +1,18 @@
-const express = require('express');
-const port = 3001;
-
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
 
 const app = express();
 
-app.use(logger('dev'));
+const port = process.env.DEV_PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan("dev"));
 
-app.use(methodOverride('_method'));
+
+
 
 app.get('/', (req, res) => {
 
@@ -21,12 +21,17 @@ app.get('/', (req, res) => {
 
 
 //Controller
+const authController = require("./controllers/authController");
+app.use("/api/", authController);
 
 const bakeryController = require('./controllers/bakeryController');
 app.use('/bakery', bakeryController)
 
 const productsController = require('./controllers/productsController');
-app.use('/products', productsController)
+app.use('/products', productsController);
+
+const subscriptionController = require('./controllers/subscriptionController');
+app.use('/subscription', subscriptionController)
 
 const schoolController = require('./controllers/schoolsController');
  app.use('/schools', schoolController)
