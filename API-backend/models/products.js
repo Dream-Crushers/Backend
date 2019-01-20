@@ -15,8 +15,10 @@ products.getAll = (req,res,next) =>{
 }
 
 products.create = (req,res,next) =>{
+
     db.one('INSERT INTO meals (name,img,calories,fat,protein,carb,sodium,cholesterol,vitamin_a,vitamin_c,calcium,iron,bakery_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING *;', 
     [req.body.name,req.body.img,req.body.calories,req.body.fat,req.body.protein,req.body.carb,req.body.sodium,req.body.cholesterol,req.body.vitamin_a,req.body.vitamin_c,req.body.calcium,req.body.iron,req.user.id])
+
     .then((data) =>{
         res.locals.product = data;
         next();
@@ -54,6 +56,7 @@ console.log(req.params.id);
         next();
     })
 }
+
 
 
 products.delete = (req,res,next)=>{
