@@ -31,7 +31,9 @@ router.post("/auth", bakeries.findEmail, bakeries.login, (req, res) => {
   }
 });
 
-router.post("/bakery", bakeries.findEmail, bakeries.create,subscription.createQ,subscription.createY, (req, res) => {
+router.post("/bakery", bakeries.findEmail, bakeries.create,
+subscription.create,
+ (req, res) => {
 // return user role 
   if (res.user) {
     res.status(400).send("user is already reigister");

@@ -5,7 +5,8 @@ const morgan = require("morgan");
 
 const app = express();
 
-const port = process.env.DEV_PORT;
+const PORT = process.env.DEV_PORT || process.env.PORT ;
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,8 +38,8 @@ const schoolController = require('./controllers/schoolsController');
  app.use('/schools', schoolController)
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('---------------------------------------');
-  console.log('Express listening on localhost:' + port);
+  console.log('Express is listening on localhost:' + PORT);
   console.log('---------------------------------------');
 });
