@@ -40,6 +40,6 @@ const schoolController = require('./controllers/schoolsController');
 
 app.listen(PORT, () => {
   console.log('---------------------------------------');
-  console.log('Express listening on localhost:' + PORT);
+  console.log('Express is listening on localhost:' + PORT);
   console.log('---------------------------------------');
 });
